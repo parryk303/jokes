@@ -54,7 +54,7 @@ export default function Bar({ isDarkTheme, changeTheme }) {
                                 <Fade {...TransitionProps} timeout={350}>
                                     <Typography sx={{ p: 2 }}>
                                         <Button sx={{ marginRight: '-20px', mr: 2 }} id='navButton' size='large' aria-label='Logout' type='submit'>
-                                            Logout <LogoutIcon />
+                                            Not Logout <LogoutIcon />
                                         </Button>
                                     </Typography>
                                 </Fade>
