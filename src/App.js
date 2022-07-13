@@ -4,10 +4,8 @@ import {
   Collapse,
   Alert,
   IconButton,
-  Button,
   Container,
   CssBaseline,
-  Typography,
   Box,
 } from '@mui/material';
 import './styles/App.css';
@@ -16,6 +14,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState, useEffect } from 'react';
 // import axios from 'axios';
 import Bar from './components/Bar';
+import Interface from './components/Interface';
 
 const light = {
   palette: {
@@ -31,16 +30,21 @@ const dark = {
 
 const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [terminal, setTerminal] = useState(false);
   const [open, setOpen] = useState(true);
 
   const changeTheme = () => {
     setIsDarkTheme(!isDarkTheme);
   };
 
+  const changeTerminal = () => {
+    setTerminal(!terminal);
+  };
+
   return (
     <>
       <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}>
-        <Bar isDarkTheme={isDarkTheme} changeTheme={changeTheme} />
+        <Bar isDarkTheme={isDarkTheme} changeTheme={changeTheme} terminal={terminal} changeTerminal={changeTerminal} />
         <CssBaseline />
         <Container id='contain' sx={{ display: 'grid', justifyContent: 'center' }}>
           <Box sx={{ width: '100%', marginTop: '4%', justifyContent: 'center' }}>
@@ -64,6 +68,7 @@ const App = () => {
                 Thank you!
               </Alert>
             </Collapse>
+            {terminal && <Interface />}
           </Box>
         </Container>
       </ThemeProvider>

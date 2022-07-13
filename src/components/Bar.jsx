@@ -1,25 +1,20 @@
-import LogoutIcon from '@mui/icons-material/Logout';
+import TerminalIcon from '@mui/icons-material/Terminal';
 import LightSwitch from './LightSwitch';
 import {
     Toolbar,
     AppBar,
     Select,
-    Button,
     MenuItem,
     FormControl,
     Typography,
     Box,
-    Popper,
     InputLabel,
-    Fade,
+    IconButton,
 } from '@mui/material';
 import { useState } from 'react';
 
-export default function Bar({ isDarkTheme, changeTheme }) {
+export default function Bar({ isDarkTheme, changeTheme, changeTerminal }) {
     const [category, setCategory] = useState('Funny');
-    const [open, setOpen] = useState(false);
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [placement, setPlacement] = useState();
 
     const handleChange = (event) => {
         setCategory(event.target.value);
@@ -42,24 +37,15 @@ export default function Bar({ isDarkTheme, changeTheme }) {
                                 <MenuItem id='script' value={'Funny'} sx={{ fontFamily: 'Vast' }}>Funny</MenuItem>
                             </Select>
                         </FormControl>
+                        <IconButton id='adminButton' size='large' aria-label='Terminal' sx={{ mr: 2 }} onClick={changeTerminal}>
+                            <TerminalIcon fontSize='large' />
+                        </IconButton>
                     </Box>
                     <Box>
-                        {/* <img id='logo' src='/joke.jpeg' alt='logo' width='481' height='80' /> */}
-                        <Typography variant='h1' sx={{fontFamily: 'Ribeye', color: 'cornflowerblue'}}>Dad Jokes</Typography>
+                        <Typography variant='h1' sx={{ fontFamily: 'Ribeye', color: 'cornflowerblue' }}>Dad Jokes</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <LightSwitch sx={{ marginLeft: '10%' }} theme={isDarkTheme} onChange={changeTheme} />
-                        <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
-                            {({ TransitionProps }) => (
-                                <Fade {...TransitionProps} timeout={350}>
-                                    <Typography sx={{ p: 2 }}>
-                                        <Button sx={{ marginRight: '-20px', mr: 2 }} id='navButton' size='large' aria-label='Logout' type='submit'>
-                                            Not Logout <LogoutIcon />
-                                        </Button>
-                                    </Typography>
-                                </Fade>
-                            )}
-                        </Popper>
                     </Box>
                 </Toolbar>
             </AppBar>
