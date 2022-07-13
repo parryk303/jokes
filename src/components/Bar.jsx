@@ -31,7 +31,7 @@ export default function Bar({ isDarkTheme, changeTheme }) {
                 <Toolbar id='tool' sx={{ justifyContent: 'space-between', padding: '1%' }}>
                     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <FormControl sx={{ m: 1, minWidth: 80 }}>
-                            <InputLabel>{category}</InputLabel>
+                            <InputLabel sx={{ fontFamily: 'Ribeye', size: 'medium' }}>Category</InputLabel>
                             <Select sx={{ fontFamily: 'Vast' }}
                                 id='script'
                                 value={category}
